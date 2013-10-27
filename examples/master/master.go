@@ -14,6 +14,9 @@ var (
 )
 
 func main() {
+
+	flag.Parse()
+
 	toSlaves, err := masterslave.Master(*uri, *key)
 	if err != nil {
 		fmt.Printf("Failed to setup master: %s", err)
@@ -24,6 +27,7 @@ func main() {
 		toSlaves <- []byte("Hello!")
 		time.Sleep(time.Second * 1)
 	}
+
 }
 
 

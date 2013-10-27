@@ -13,6 +13,9 @@ var (
 )
 
 func main() {
+
+	flag.Parse()
+
 	slave, err := masterslave.NewSlave(*uri, *key)
 	if err != nil {
 		fmt.Printf("Failed to setup Slave: %s", err)
@@ -24,6 +27,7 @@ func main() {
 		fmt.Println("Received job: %q", string(job.Payload))
 		job.Done()
 	}
+
 }
 
 
